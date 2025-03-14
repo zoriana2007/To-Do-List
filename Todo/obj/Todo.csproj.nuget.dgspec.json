@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yuki/Desktop/projects/Todo/Todo.csproj": {}
+    "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj": {}
   },
   "projects": {
-    "/Users/yuki/Desktop/projects/Todo/Todo.csproj": {
+    "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yuki/Desktop/projects/Todo/Todo.csproj",
+        "projectUniqueName": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj",
         "projectName": "Todo",
-        "projectPath": "/Users/yuki/Desktop/projects/Todo/Todo.csproj",
+        "projectPath": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj",
         "packagesPath": "/Users/yuki/.nuget/packages/",
-        "outputPath": "/Users/yuki/Desktop/projects/Todo/obj/",
+        "outputPath": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yuki/.nuget/NuGet/NuGet.Config"
