@@ -1,5 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.Sqlite;
+using Todo.Models.ViewModels;
+
 using Todo.Models;
 
 namespace Todo.Controllers;
@@ -15,27 +18,72 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
-    }
-     public RedirectResult Insert(TodoItem todo)
-{
-    using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
-    {
-        using (var tableCmd = con.CreateCommand())
-        {
-            con.Open();
-            tableCmd.CommandText = $"INSERT INTO todo (name) VALUES ('{todo.Name}')";
+        //return View();
+        var todoListViewModel=GetAllTodos();
+        return View(todoListViewModel);
 
-            try
+    }
+    internal TodoViewModel GetAllTodos()
+    {
+        List<TodoItem> todoList = new();
+        using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+        {
+            using (var tableCmd = con.CreateCommand())
             {
-                tableCmd.ExecuteNonQuery();
+                con.Open();
+                tableCmd.CommandText = "SELECT * FROM todo";
+
+                using (var reader = tableCmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            todoList.Add(
+                                new TodoItem
+                                {
+                                    Id = reader.GetInt32(0),
+                                    Name = reader.GetString(1)
+                                }
+                            );
+                        }
+                    }
+                    else
+                    {
+                        return new TodoViewModel
+                        {
+                            TodoList = todoList
+                        };
+                    }
+                }
+                ;
             }
-            catch (Exception ex)
+
+        }
+        return new TodoViewModel
+        {
+            TodoList = todoList
+        };
+    }
+    public RedirectResult Insert(TodoItem todo)
+    {
+        using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+        {
+            using (var tableCmd = con.CreateCommand())
             {
-                Console.WriteLine(ex.Message);
+                con.Open();
+                tableCmd.CommandText = $"INSERT INTO todo (name) VALUES ('{todo.Name}')";
+
+                try
+                {
+                    tableCmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
+        return Redirect("http://localhost:5113/");//5005
     }
-   return Redirect("http://localhost:5005/");
-}
 }
