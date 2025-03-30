@@ -3,21 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Todo</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Todo.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - My Todo App</title>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <nav class="navbar">
+        <a href="/" class="nav-brand">My Todo</a>
+        <div class="nav-links">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <span>Hi, @User.Identity.Name!</span>
+                <a href="#" onclick="document.getElementById('logoutForm').submit()">Logout</a>
+                <form id="logoutForm" asp-controller="Auth" asp-action="Logout" method="post" style="display: none;"></form>
+            }
+            else
+            {
+                <a asp-controller="Auth" asp-action="Login">Login</a>
+                <a asp-controller="Auth" asp-action="Register">Register</a>
+            }
+        </div>
+    </nav>
+
     <div class="container">
-        @Html.Partial("_Form")
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        @RenderBody()
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

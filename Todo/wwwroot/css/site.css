@@ -1,5 +1,17 @@
+:root {
+  --pastel-blue: #B5EAD7; 
+  --pastel-pink: #FFD1DC;
+  --pastel-lavender: #E2CFEA; 
+  --pastel-peach: #FFDFD3;
+  --text-color: #5A5A5A;   
+  --light-bg: #FFF9F9;     
+}
+
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -8,15 +20,122 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.5;
+  padding-bottom: 60px;
+}
+
+/* Простая навигация */
+.navbar {
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  color: var(--pastel-lavender);
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  margin-left: 1rem;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  background-color: var(--pastel-blue);
+}
+
+/* Контейнер */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Кнопки */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--pastel-lavender);
+  color: var(--text-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--pastel-blue);
+}
+
+/* Формы */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Карточки задач */
+.todo-card {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--pastel-pink);
+}
+
+.todo-card.completed {
+  border-left-color: var(--pastel-blue);
+  opacity: 0.8;
+}
+
+/* Сообщения */
+.alert {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: var(--pastel-blue);
+}
+
+.alert-error {
+  background-color: var(--pastel-pink);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-links {
+    margin-top: 1rem;
+  }
+  
+  .nav-links a {
+    margin: 0 0.5rem;
+  }
 }
