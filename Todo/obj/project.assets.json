@@ -7746,24 +7746,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/yuki/.nuget/packages/": {}
+    "C:\\Users\\Stasya\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj",
+      "projectUniqueName": "C:\\Users\\Stasya\\Documents\\GitHub\\To-Do-List1\\Todo\\Todo.csproj",
       "projectName": "Todo",
-      "projectPath": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj",
-      "packagesPath": "/Users/yuki/.nuget/packages/",
-      "outputPath": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/obj/",
+      "projectPath": "C:\\Users\\Stasya\\Documents\\GitHub\\To-Do-List1\\Todo\\Todo.csproj",
+      "packagesPath": "C:\\Users\\Stasya\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Stasya\\Documents\\GitHub\\To-Do-List1\\Todo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/yuki/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Stasya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7781,7 +7783,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -7831,6 +7834,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.14, 8.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.14, 8.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.14, 8.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.14, 8.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7839,7 +7860,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
