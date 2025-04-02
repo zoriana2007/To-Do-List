@@ -332,26 +332,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Stasya\\.nuget\\packages\\": {}
+    "/Users/yuki/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Stasya\\Documents\\GitHub\\To-Do-List\\Todo\\Todo.csproj",
+      "projectUniqueName": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj",
       "projectName": "Todo",
-      "projectPath": "C:\\Users\\Stasya\\Documents\\GitHub\\To-Do-List\\Todo\\Todo.csproj",
-      "packagesPath": "C:\\Users\\Stasya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Stasya\\Documents\\GitHub\\To-Do-List\\Todo\\obj\\",
+      "projectPath": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/Todo.csproj",
+      "packagesPath": "/Users/yuki/.nuget/packages/",
+      "outputPath": "/Users/yuki/Documents/GitHub/To-Do-List/Todo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Stasya\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/yuki/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -399,7 +397,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
