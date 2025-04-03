@@ -120,7 +120,7 @@ internal TodoItem GetById(int id)
                 }
             }
         }
-        return Redirect("http://localhost:5113/");//5005
+        return Redirect("/");
     }
 
     [HttpPost]
@@ -157,7 +157,7 @@ internal TodoItem GetById(int id)
                 }
             }
 
-            return Redirect("https://localhost:5001/");
+            return Redirect("/");
         }
     }
 
