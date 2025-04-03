@@ -6,21 +6,21 @@ namespace MyApp.Tests;
 public class UnitTest1
 {
     [Fact]
-        public void WebApplication_Can_Build_And_Configure()
-        {
-            // Arrange
-            var builder = WebApplication.CreateBuilder(new string[] { });
+    public void WebApplication_Can_Build_And_Configure()
+    {
+        // Arrange
+        var builder = WebApplication.CreateBuilder(new string[] { });
 
-            // Додаємо сервіси
-            builder.Services.AddControllersWithViews();
+        // Додаємо сервіси
+        builder.Services.AddControllersWithViews();
 
-            // Act
-            var app = builder.Build();
+        // Act
+        var app = builder.Build();
 
-            
-            var isDevelopment = app.Environment.IsDevelopment(); 
-            // Assert
-            Assert.NotNull(app);
-            Assert.False(isDevelopment); 
-        }
+
+        var isDevelopment = app.Environment.IsDevelopment();
+        // Assert
+        Assert.NotNull(app);
+        Assert.False(isDevelopment);
+    }
 }
