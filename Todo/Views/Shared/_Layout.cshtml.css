@@ -2,65 +2,71 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: nowrap;
-  text-align: center;
-  word-break: break-word;
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
 }
 
 a {
-  color: #A3C4F3; 
+    color: #F50057;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: inherit;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #F4A8A8;
-  border-color: #E39393;
-  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    color: #fff;
+    background-color: #FF7B9B;
+    border-color: #F50057;
 }
 
-.btn-primary:hover {
-  background-color: #E39393;
-  border-color: #CC7C7C;
+    .btn-primary:hover {
+        background-color: #F50057;
+        border-color: #C51162;
+    }
+
+.btn-secondary {
+    background-color: #F5A9B8;
+    border-color: #F88B98; 
+    color: #fff;
 }
+
+    .btn-secondary:hover {
+        background-color: #F88B98;
+        border-color: #F5737A; 
+    }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #A3C4F3;
-  border-color: #829AB1;
-  font-weight: bold;
+    color: #fff;
+    background-color: #F05077;
+    border-color: #F50057;
 }
 
 .border-top {
-  border-top: 2px solid #EDE4E0; 
+    border-top: 2px solid #F5A5B6;
 }
 
 .border-bottom {
-  border-bottom: 2px solid #EDE4E0;
+    border-bottom: 2px solid #F5A5B6;
 }
 
 .box-shadow {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  line-height: 50px;
-  padding: 15px 0;
-  background-color: #FAF3E0; 
-  border-top: 2px solid #EDE4E0;
-}
-
-@media (max-width: 768px) {
-  .footer {
-    line-height: 40px;
-  }
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 50px;
+    padding: 15px 0;
+    background-color: #F9C0D3;
+    border-top: 2px solid #F5A5B6;
 }
