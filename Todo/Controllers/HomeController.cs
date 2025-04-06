@@ -20,9 +20,17 @@ namespace Todo.Controllers
 
         public IActionResult Index()
         {
-            var todoListViewModel = GetAllTodos();
+            var username = HttpContext.Session.GetString("Username");
+
+            if (username == null)
+                return RedirectToAction("Login");
+
+            var todoListViewModel = GetAllTodos(username);
             return View(todoListViewModel);
         }
+
+
+
 
         [HttpGet]
         public JsonResult PopulateForm(int id)
@@ -31,13 +39,13 @@ namespace Todo.Controllers
             return Json(todo);
         }
 
-        internal TodoViewModel GetAllTodos()
+        internal TodoViewModel GetAllTodos(string username)
         {
             List<TodoItem> todoList = new();
             using var con = new SqliteConnection(ConnectionString);
             using var tableCmd = con.CreateCommand();
             con.Open();
-            tableCmd.CommandText = "SELECT * FROM todo";
+            tableCmd.CommandText = $"SELECT * FROM todo WHERE username = '{username}'";
 
             using var reader = tableCmd.ExecuteReader();
             while (reader.Read())
@@ -51,6 +59,8 @@ namespace Todo.Controllers
 
             return new TodoViewModel { TodoList = todoList };
         }
+
+
 
         internal TodoItem GetById(int id)
         {
@@ -71,13 +81,18 @@ namespace Todo.Controllers
 
         public RedirectResult Insert(TodoItem todo)
         {
+            var username = HttpContext.Session.GetString("Username");
+            if (string.IsNullOrEmpty(username))
+                return Redirect("/Home/Login");
+
             using var con = new SqliteConnection(ConnectionString);
             using var tableCmd = con.CreateCommand();
             con.Open();
-            tableCmd.CommandText = $"INSERT INTO todo (name) VALUES ('{todo.Name}')";
+            tableCmd.CommandText = $"INSERT INTO todo (name, username) VALUES ('{todo.Name}', '{username}')";
             tableCmd.ExecuteNonQuery();
             return Redirect("/");
         }
+
 
         [HttpPost]
         public JsonResult Delete(int id)
@@ -159,7 +174,7 @@ namespace Todo.Controllers
 
             if (count > 0)
             {
-                HttpContext.Session.SetString("Username", user.Username);
+                HttpContext.Session.SetString("Username", user.Username);  // Зберігаємо ім'я користувача в сесії
                 return RedirectToAction("Index");
             }
             else
@@ -169,10 +184,12 @@ namespace Todo.Controllers
             }
         }
 
+
         public IActionResult Logout()
         {
-            HttpContext.Session.Clear();
+            HttpContext.Session.Clear();  // Очищаємо сесію
             return RedirectToAction("Login");
         }
+
     }
 }
