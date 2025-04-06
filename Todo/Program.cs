@@ -1,15 +1,26 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Додаємо сервіси сесії
+builder.Services.AddDistributedMemoryCache();  // Використовуємо пам'ять для збереження сесій
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Час очікування для сесії
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+// Налаштовуємо середовище
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -18,16 +29,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+// Додаємо сесії після UseRouting
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
-
-builder.Services.AddSession();
-app.UseSession();
-
-app.MapDefaultControllerRoute();
 app.Run();
