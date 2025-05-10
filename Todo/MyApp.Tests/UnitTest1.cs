@@ -107,5 +107,48 @@ namespace MyApp.Tests
             Assert.IsType<RedirectResult>(result);
         }
 
+        [Fact]
+        public void Update_UpdatesTodoItem()
+        {
+            // Arrange
+            var todoItem = new TodoItem { Id = 1, Name = "Updated Todo" };
+            var controller = new HomeController(new Mock<ILogger<HomeController>>().Object);
+
+            // Act
+            var result = controller.Update(todoItem);
+
+            // Assert
+            Assert.IsType<RedirectResult>(result);
+        }
+        [Fact]
+        public void Delete_DeletesTodoItem()
+        {
+            // Arrange
+            var controller = new HomeController(new Mock<ILogger<HomeController>>().Object);
+            int idToDelete = 1;
+
+            // Act
+            var result = controller.Delete(idToDelete);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.NotNull(jsonResult.Value);
+        }
+        [Fact]
+        public void Register_CreatesUser_WhenNotExists()
+        {
+            // Arrange
+            var user = new User { Username = "newUser", Password = "password123" };
+            var controller = new HomeController(new Mock<ILogger<HomeController>>().Object);
+
+            // Act
+            var result = controller.Register(user);
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Login", redirectResult.ActionName);
+        }
+
+
     }
 }
