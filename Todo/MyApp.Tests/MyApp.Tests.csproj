@@ -24,4 +24,7 @@
     </PackageReference>
   </ItemGroup>
 
+<ItemGroup>
+  <ProjectReference Include="..\Todo.csproj" />
+</ItemGroup>
 </Project>

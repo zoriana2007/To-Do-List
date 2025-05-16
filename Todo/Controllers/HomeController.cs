@@ -16,6 +16,7 @@ namespace Todo.Controllers
         {
             _logger = logger;
             CreateUsersTable();
+                CreateTodoTable(); // unit testing
         }
 
         public IActionResult Index()
@@ -28,7 +29,21 @@ namespace Todo.Controllers
             var todoListViewModel = GetAllTodos(username);
             return View(todoListViewModel);
         }
+//for unit testing
+        private void CreateTodoTable()
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
 
+            string sql = @"CREATE TABLE IF NOT EXISTS todo (
+                      Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                      Name TEXT NOT NULL,
+                      Username TEXT NOT NULL
+                  );";
+
+            using var command = new SqliteCommand(sql, connection);
+            command.ExecuteNonQuery();
+        }
 
 
 
