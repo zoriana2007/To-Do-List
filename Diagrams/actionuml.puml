@@ -1,0 +1,63 @@
+@startuml
+|Client|
+start
+:Registration;
+
+|Server|
+if (Login?) then (yes)
+    :Entering login and password;
+else (no)
+    :Create login and password;
+    |Database|
+    :Create user;
+    |Server|
+    :Entering login and password;
+endif
+
+|Database|
+if (Check user data?) then (incorrect)
+    |Server|
+    :Error incorrect data;
+    if (User action after error?) then (create new account)
+        --> :Create login and password;
+    else (recovery)
+    :New data entry;
+    -->:Entering login and password;
+    endif
+else (correct)
+    |Server|
+    :Server ingress;
+endif
+    |Database|
+if (Check existing note?) then (yes)
+  |Server|
+  :Display note;
+else (no)
+endif
+|Client|
+fork
+  :Add a note;
+  |Server|
+  :Display new note;
+  |Database|
+  :Recover new note in data;
+fork again
+|Client|
+:Edit a note;
+  |Server|
+  :Display new note;
+  |Database|
+  :Edit new note in data;
+  fork again
+|Client|
+:Delete a note;
+  |Server|
+  :Retract note;
+  |Database|
+  :Delete note from data;
+  |Client|
+end fork
+|Client|
+:logout;
+stop
+@enduml
